@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Gallery</title>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <script type="text/javascript" src="scripts/jquery.js"></script>
+    <script type="text/javascript" src="scripts/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+    <link rel="stylesheet" type="text/css" href="scripts/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("a.photo").fancybox({
+                transitionIn: 'elastic',
+                transitionOut: 'elastic',
+                speedIn: 500,
+                speedOut: 500
+            });
+        });
+    </script>
+
+</head>
+
+<body>
+<div id="main">
+    <div class="post_title"><h2>Gallery with TWIG</h2></div>
+    <div class="gallery">
+
+        {% for photo in photos %}
+        <a rel="gallery" class="photo" href="oneImage.php?name={{ photo.name }}&format={{ photo.format }}&id={{ photo.id }}" target="_blank">
+            <img src="images/thumbs/{{ photo.name }}.{{ photo.format }}" alt=""></a>
+        {% endfor %}
+    </div>
+</div>
+
+</body>
+</html>
+
+{#<!DOCTYPE HTML>#}
+{#<!--#}
+	{#Lens by HTML5 UP#}
+	{#html5up.net | @ajlkn#}
+	{#Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)#}
+{#-->#}
+{#<html>#}
+{#<head>#}
+    {#<title>Gallery</title>#}
+    {#<meta charset="utf-8" />#}
+    {#<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />#}
+    {#<link rel="stylesheet" href="../assets/css/main.css" />#}
+    {#<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>#}
+{#</head>#}
+{#<body class="is-preload-0 is-preload-1 is-preload-2">#}
+
+{#<!-- Main -->#}
+{#<div id="main">#}
+
+    {#<!-- Header -->#}
+    {#<header id="header">#}
+        {#<h1>Gallery</h1>#}
+        {#<p>Домашнее задание по курсу  PHP2 <a href="#">Andrey Gladyshev</a></p>#}
+        {#<ul class="icons">#}
+            {#<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>#}
+            {#<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>#}
+            {#<li><a href="#" class="icon fa-github"><span class="label">Github</span></a></li>#}
+            {#<li><a href="#" class="icon fa-envelope-o"><span class="label">Email</span></a></li>#}
+        {#</ul>#}
+    {#</header>#}
+
+    {#<!-- Thumbnail -->#}
+    {#<section id="thumbnails">#}
+        {#{% for photo in photos %}#}
+        {#<article>#}
+            {#<a class="thumbnail" href="images/fulls/{{ photo.name }}.{{ photo.format }}">#}
+                {#<img src="images/thumbs/{{ photo.name }}.{{ photo.format }}" alt="" /></a>#}
+            {#<h2>Mattis lorem sodales</h2>#}
+            {#<p>Feugiat auctor leo massa, nec vestibulum nisl erat faucibus, rutrum nulla.</p>#}
+        {#</article>#}
+        {#{% endfor %}#}
+    {#</section>#}
+
+    {#<!-- Footer -->#}
+    {#<footer id="footer">#}
+        {#<ul class="copyright">#}
+            {#<li>&copy; Здесь находится футер и все что с этим связано</li><li><a href="#">Design: Андрей Гладышев</a>.</li>#}
+        {#</ul>#}
+    {#</footer>#}
+
+{#</div>#}
+
+{#<!-- Scripts -->#}
+{#<script src="../assets/js/jquery.min.js"></script>#}
+{#<script src="../assets/js/browser.min.js"></script>#}
+{#<script src="../assets/js/breakpoints.min.js"></script>#}
+{#//<script src="../assets/js/main.js"></script>#}
+
+{#</body>#}
+{#</html>#}
