@@ -9,21 +9,22 @@ $(document).ready(function () {
                 type:'POST',
                 data: 'lastGood=' + lastGood,
                 success: function (data) {
-                    var goods = JSON.parse(data);
-                    console.log(goods);
-                    var html ='';
+                   if(JSON.parse(data).length !== 0){
+                       var goods = JSON.parse(data);
+                       console.log(goods);
+                       var html ='';
 
-                    for(var good in goods) {
-                        console.log(goods[good].id);
-                        html +=  `<div class='goodsWrap' data-number="${goods[good].number}">`;
-                       if(good.discount > 0) {
-                           html  += '<div class="sticker"><img class="stickerImg" src="/public/css/star.png"><span class="stickerTextFit">' + goods[good].discount + '%</span></div>';
-                       } else if(goods[good].stickerFit === 1) {
-                           html += '<div class="sticker"><img class="stickerImg" src="/public/css/star.png"><span class="stickerTextFit">Fit!</span></div>'
-                       } else if(goods[good].stickerHit === 1) {
-                           html += '<div class="sticker"><img class="stickerImg" src="/public/css/star.png"><span class="stickerTextHit">Hit!</span></div>';
-                       }
-                        html += `<div class="wrapGoodImg">
+                       for(var good in goods) {
+                           console.log(goods[good].id);
+                           html +=  `<div class='goodsWrap' data-number="${goods[good].number}">`;
+                           if(good.discount > 0) {
+                               html  += '<div class="sticker"><img class="stickerImg" src="/public/css/star.png"><span class="stickerTextFit">' + goods[good].discount + '%</span></div>';
+                           } else if(goods[good].stickerFit === 1) {
+                               html += '<div class="sticker"><img class="stickerImg" src="/public/css/star.png"><span class="stickerTextFit">Fit!</span></div>'
+                           } else if(goods[good].stickerHit === 1) {
+                               html += '<div class="sticker"><img class="stickerImg" src="/public/css/star.png"><span class="stickerTextHit">Hit!</span></div>';
+                           }
+                           html += `<div class="wrapGoodImg">
 <a href="item.php?photo=${good.bigPhoto}&id=${goods[good].id}"><img class='goodImg'src="${goods[good].miniPhoto}"></a>
 </div>
 <div class="wrapGoodInfo">
@@ -35,9 +36,12 @@ $(document).ready(function () {
 <input type='button' class='addToBasket btn' value='Дoбавить в корзину' onclick="addToBasket(${goods[good].id})" data-id='${goods[good].id}'>
 <input type='button' class='deleteToBasket btn' value='Удалить из корзины' onclick="deleteToBasket(${goods[good].id})" data-id='${goods[good].id}'>
 </div></div>`
-                    }
+                       }
 
-                    $('.goodsTable').append(html)
+                       $('.goodsTable').append(html)
+                   } else {
+                       $(".loadMore").html('Упс, больше нет')
+                   }
                 }
             })
         });
