@@ -31,13 +31,13 @@ $good = getOne($connect, $id, 'goods');
                     <div class='goodsParam'><span><b>Состав: </b></span><?= $good['param']?></div>
                     <div class='goodsWeightItem'><span><b>Вес: </b></span><?= $good['weight']?> гр./порцию</div>
 					<?php if ($good['discount']>0) {
-					echo('<div class="stickerItem"><img class="stickerImgItem" src="/my_shop/public/css/star.png"><span class="stickerTextItem">'.$good['discount'].'%</span><div class="explain">    блюдо со скидкой дня '.$good['discount'].'%</div></div>');
+					echo('<div class="stickerItem"><img class="stickerImgItem" src="/public/css/star.png"><span class="stickerTextItem">'.$good['discount'].'%</span><div class="explain">    блюдо со скидкой дня '.$good['discount'].'%</div></div>');
 				};
 				if ($good['stickerFit']==1) {
-					echo('<div class="stickerItem"><img class="stickerImgItem" src="/my_shop/public/css/star.png"><span class="stickerTextItem">Fit!</span> <div class="explain">     блюдо с низкой калорийностью</div></div>');
+					echo('<div class="stickerItem"><img class="stickerImgItem" src="/public/css/star.png"><span class="stickerTextItem">Fit!</span> <div class="explain">     блюдо с низкой калорийностью</div></div>');
 				};
 				if ($good['stickerHit']==1) {
-					echo('<div class="stickerItem"><img class="stickerImgItem" src="/my_shop/public/css/star.png"><span class="stickerTextItem">Hit!</span><div class="explain">    популярное блюдо</div></div>');
+					echo('<div class="stickerItem"><img class="stickerImgItem" src="/public/css/star.png"><span class="stickerTextItem">Hit!</span><div class="explain">    популярное блюдо</div></div>');
 				};?>
 					</div>
 					<div class="btnWrapItem">
